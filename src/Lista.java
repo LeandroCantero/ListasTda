@@ -119,10 +119,14 @@ public class Lista {
         NodoLista nuevo = new NodoLista();
         NodoLista actual = this.primero;
         nuevo.dato = d;
-        if(!this.estaVacia() && pos < this.tamanio()) {
+        if(pos > 0 && pos < this.tamanio()) {
             for(int i = 0; i < pos-1; i++) {
                 actual = actual.siguiente;
             }
+            nuevo.siguiente = (actual.siguiente).siguiente;
+            actual.siguiente = nuevo;
+        }
+        else if(pos == 0) {
             nuevo.siguiente = (actual.siguiente).siguiente;
             actual.siguiente = nuevo;
         }
