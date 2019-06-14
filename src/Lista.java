@@ -8,9 +8,17 @@ public class Lista {
     public void imprimir() {
         NodoLista actual = this.primero;
         while(actual != null){
-            System.out.println(actual.dato);
+            System.out.print("["+actual.dato+"]--->");
             actual = actual.siguiente;
         }
+    }
+
+    public void imprimirElemento(int elemento){
+        NodoLista actual = this.primero;
+        for(int i = 0; i < elemento; i++){
+            actual = actual.siguiente;
+        }
+        System.out.println("[" + actual.dato + "]");
     }
 
     //EJ 1
@@ -58,7 +66,7 @@ public class Lista {
     }
 
     public boolean estaVacia() {
-        return this.tamanio == 0;
+        return primero == null;
     }
 
     public boolean estaLlena() {
@@ -103,7 +111,7 @@ public class Lista {
             for (int i = 0; i < pos-1; i++) {
                 actual = actual.siguiente;
             }
-            actual = (actual.siguiente).siguiente;
+            actual.siguiente = (actual.siguiente).siguiente;
         }
     }
 
@@ -115,17 +123,18 @@ public class Lista {
             for(int i = 0; i < pos-1; i++) {
                 actual = actual.siguiente;
             }
-            actual.siguiente  = nuevo;
+            nuevo.siguiente = (actual.siguiente).siguiente;
+            actual.siguiente = nuevo;
         }
     }
 
     //EJ 2
-    public void intercambiarDosPrimeros() {
+        public void intercambiarDosPrimeros() {
         if(!this.estaVacia()) {
-            NodoLista nodo = this.primero;
             NodoLista aux = this.primero.siguiente;
-            nodo.siguiente = nodo;
-            nodo = aux;
+            this.primero.siguiente = aux.siguiente;
+            aux.siguiente = this.primero;
+            this.primero = aux;
         }
     }
 

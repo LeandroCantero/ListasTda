@@ -9,8 +9,15 @@ public class Main {
         lista.agregar(10);
 
         lista.imprimir();
-        System.out.println(lista.tamanio());
-        System.out.println(lista.estaVacia());
-        System.out.println(lista.estaLlena());
+        System.out.println();
+        System.out.println();
+        lista.tamanio();
+        lista.estaVacia();
+        //lista.insertarElemento(3, 3);
+        //lista.eliminarElemento(2);
+        lista.reemplazarElemento(4, 4);
+        //lista.intercambiarDosPrimeros();
+
+        lista.imprimir();
     }
 }
